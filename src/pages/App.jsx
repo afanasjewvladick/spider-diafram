@@ -1,11 +1,10 @@
 import React from 'react';
-import Hello from '../components/Hello.jsx';
+import TaskList from '../components/TaskList.jsx';
+import './App.scss';
 
 const App = () => (
-  <div>
-    <Hello />
-    <Hello />
-    <Hello />
+  <div className="app-class">
+    <TaskList />
   </div>
 );
 

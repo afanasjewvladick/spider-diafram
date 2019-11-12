@@ -1,0 +1,46 @@
+.main-task-list {
+  width: 250px;
+  height: 100%;
+  background: white;
+  border: solid 1px #2B94D4;;
+  border-radius: 10px;
+  &-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    font-size: 20px;
+    height: 40px;
+    background: #2B94D4;
+    border-radius: 10px 10px 0px 0px;
+  }
+  &-body {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    flex-flow: row nowrap;
+    font-size: 18px;
+    border-bottom: solid 1px #2B94D4;;
+    &-name {
+      display: flex;
+      justify-content: center;
+      margin: 0 12px 0 12px;
+      width: 140px;
+    }
+    &-value {
+      display: flex;
+      justify-content: center;
+      width: 78px;
+    }
+  }
+}
+
+.create-button {
+  border-radius: 20px;
+  background: white;
+  color: #2B94D4;
+  border: 1px solid #2B94D4;
+  margin: 10px 0 10px 75px;
+  width: 100px;
+  height: 30px;
+  outline: 0 !important;
+}
