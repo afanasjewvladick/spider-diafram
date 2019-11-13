@@ -1,15 +1,10 @@
-import React from 'react';
+// import React from 'react';
+import React, { useState } from 'react';
 import './TaskList.scss';
 
-let lists = [
-  { id: 0, name: 'Vlad', age: 20 },
+const lists = [
+  { id: 0, name: 'Test', value: 20 },
 ];
-
-const ListItems = lists.forEach((number) => {
-  return number;
-});
-// console.log('ListItems', ListItems);
-
 
 const TaskList = () => (
   <div className="main-task-list">
@@ -28,15 +23,8 @@ const TaskListHeader = () => (
 const TaskListBody = () => (
   <div className="main-task-list-body">
     <div className="main-task-list-body-name">
-      <div>{ListItems}</div>
-      {/* <For each="item" in={lists}>
-        <div>{ item.name }</div>
-      </For> */}
-      {/* <ListItems /> */}
+      <div>{lists.map((item) => <div key={item.id}>{item.name}</div>)}</div>
     </div>
-    {/* <div className="main-task-list-body-value">
-      {object.age}
-    </div> */}
   </div>
 );
 
@@ -51,7 +39,9 @@ const CreateTaskButton = () => (
 );
 
 const createTask = () => (
-  console.log('Привет!')
+  lists.push({ id: 1, name: 'Test 2', value: 22 }),
+  // TaskListBody(),
+  console.log('lists', lists)
 );
 
 
