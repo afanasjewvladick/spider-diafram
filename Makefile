@@ -47,10 +47,10 @@ front-build: ## build front
 front-dev: ## run dev server
 	cd ./src/front && npm run dev
 
-front-npm: ##npm install front
+front-install: ##npm install front
 	@cd ./src/front && npm install
   
 # # --- [ Backend ] -------------------------------------------------------------------------------------------------
 
-back-npm: ## npm install for webserver
+back-install: ## npm install for webserver
 	@cd ./src/back && npm install
