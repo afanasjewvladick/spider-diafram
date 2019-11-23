@@ -7,10 +7,6 @@ In the project directory, you can run:
 
 Init project.
 
-### `make init`
-
-Init project.
-
 ### `make build`
 
 Rebuild all containers
