@@ -1,8 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import './TaskList.scss';
+import { addTask } from '../store/actions/actions';
 
-const App = ({ lists }) => {
+
+// const CounterComponent = () => {
+//   const lists = useSelector((state) => state.TodoList.lists);
+//   return (
+//     <div>
+//       {lists.map((item) => <div className="main-task-list-body" key={item.id}>{item.name}</div>)}
+//     </div>
+//   );
+// };
+
+// export default (CounterComponent);
+
+const App = ({ lists, setTask }) => {
   const TaskListHeader = () => (
     <div className="main-task-list-header">
       <div style={{ color: 'white' }}>Список характеристик</div>
@@ -14,17 +27,17 @@ const App = ({ lists }) => {
     </div>
   );
 
-  // const createTask = () => {
-  //   lists.push({ id: 1, name: 'Test 2', value: 22 });
-  //   // Важно! Иначе не работает...
-  //   setList([...lists]);
-  // };
+  const createTask = () => {
+    lists.push({ id: 1, name: 'Test 2', value: 22 });
+    // Важно! Иначе не работает...
+    setTask(lists);
+  };
 
   const CreateTaskButton = () => (
     <button
       type="button"
       className="create-button"
-      // onClick={createTask}
+      onClick={createTask}
     >
       Создать
     </button>
@@ -39,14 +52,19 @@ const App = ({ lists }) => {
   );
 };
 
-// Обращение к store.
-const mapStateToProps = (store) => ({
-  lists: store.TodoList.lists,
+// const mapStateToProps = (store) => ({
+//   lists: store.TodoList.lists,
+// });
+function mapStateToProps(store) {
+  const { lists } = store.TodoList;
+
+  return {
+    lists,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  setTask: (lists) => dispatch(addTask(lists)),
 });
 
-/*
-  Назначение функции connect вытекает из названия: подключи React компонент к Redux store.
-  Результат работы функции connect -
-  новый присоединенный компонент, который оборачивает переданный компонент.
-*/
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
