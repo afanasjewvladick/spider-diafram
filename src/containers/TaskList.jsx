@@ -1,21 +1,13 @@
 import React from 'react';
-import { connect, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import './TaskList.scss';
 import { addTask } from '../store/actions/actions';
 
+const App = () => {
+  const lists = useSelector((state) => state.TodoList.lists);
+  const dispatch = useDispatch();
+  const store = useStore();
 
-// const CounterComponent = () => {
-//   const lists = useSelector((state) => state.TodoList.lists);
-//   return (
-//     <div>
-//       {lists.map((item) => <div className="main-task-list-body" key={item.id}>{item.name}</div>)}
-//     </div>
-//   );
-// };
-
-// export default (CounterComponent);
-
-const App = ({ lists, setTask }) => {
   const TaskListHeader = () => (
     <div className="main-task-list-header">
       <div style={{ color: 'white' }}>Список характеристик</div>
@@ -28,9 +20,7 @@ const App = ({ lists, setTask }) => {
   );
 
   const createTask = () => {
-    lists.push({ id: 1, name: 'Test 2', value: 22 });
-    // Важно! Иначе не работает...
-    setTask(lists);
+    dispatch(addTask(lists));
   };
 
   const CreateTaskButton = () => (
@@ -52,19 +42,5 @@ const App = ({ lists, setTask }) => {
   );
 };
 
-// const mapStateToProps = (store) => ({
-//   lists: store.TodoList.lists,
-// });
-function mapStateToProps(store) {
-  const { lists } = store.TodoList;
 
-  return {
-    lists,
-  };
-}
-
-const mapDispatchToProps = (dispatch) => ({
-  setTask: (lists) => dispatch(addTask(lists)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default (App);
